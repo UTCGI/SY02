@@ -7,6 +7,8 @@
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
+\usepackage{fancyvrb}
+
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
@@ -40,7 +42,6 @@
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
-\usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
 \newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
@@ -103,17 +104,89 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+%
+% Inclusion des packets
+\usepackage[a4paper,top=2cm,bottom=1.5cm,left=2cm,right=2cm,marginparwidth=1.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amssymb,amsmath}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage[font=small, labelfont=bf]{caption}
+% \usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{incgraph}
+\usepackage{algorithm}
+\usepackage{pdfpages}
 
-\author{}
-\date{}
+% Mise en page 
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+\onehalfspacing
+
+\pagestyle{fancy}
+\fancyhf{}
+\setlength\headheight{15pt}
+ \setlength{\marginparwidth}{2cm}
+\usepackage[
+    left = \flqq{},% 
+    right = \frqq{},% 
+    leftsub = \flq{},% 
+    rightsub = \frq{} %
+    ]{dirtytalk}
+    \setlength\headheight{15pt}
+    
+    % Ligne de Haut de page (Nom + UV)
+    \fancyhead[L]{SAVARY Tobias UTC - GI02} 
+    \fancyhead[R]{SY02 - Rapport TP1}
+
+    % Bas de page (Nomero de page + UTC)
+    \fancyfoot[R]{\thepage}
+    \fancyfoot[L]{Université de Technologie de Compiègne}
+     \setlength {\marginparwidth}{2cm}
+     \renewcommand{\footrulewidth}{.5pt}
 
 \begin{document}
+
+\title{ 
+  % TODO : Possible de mettre des images en haut de la page de garde 
+  \begin{center}
+          \includegraphics[width=5cm]{img/logo_IA01.png} \hspace*{1cm}
+          \includegraphics[width=9cm]{img/logo_UTC.png} \\ [2cm]
+  \end{center}
+		\HRule{2pt} \\
+
+    % Titre du Rapport
+		\LARGE \textbf{Rapport TP1:\\Prise en main R \\} 
+		\HRule{2pt} \\ [5.5cm]
+
+
+		\normalsize  
+    % Nom de l'auteur
+        \author{
+            Tobias SAVARY \\[0.5cm]
+           \\[1cm]
+        }
+		}
+    % Année universitaire
+		\maketitle
+        \begin{center}
+            Année universitaire 2022/2023
+        \end{center}
+\pagebreak
+
+% Table des matières 
+\tableofcontents
+
+\pagebreak
 
 \hypertarget{tp1-sy02-prise-en-main-de-r}{%
 \section{TP1 SY02 : Prise en main de
 R}\label{tp1-sy02-prise-en-main-de-r}}
 
-\#\#~3 Structures de données usuelles
+\hypertarget{structures-de-donnuxe9es-usuelles}{%
+\subsection{3 Structures de données
+usuelles}\label{structures-de-donnuxe9es-usuelles}}
 
 On utilise les vecteurs pour des variables quantitatives.\\
 2. Initialiser le vecteur colonne notes.
@@ -331,7 +404,9 @@ On utilise des facteurs pour les variables qualitatives.
 \end{Highlighting}
 \end{Shaded}
 
-TODO : Quel est la différence entre length et ncol
+Pas vraiment de différence entre length et ncol (length est utilisé pour
+donner la taille d'un vecteur alors que ncol est utilisé pour un data
+frame.)
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -583,7 +658,7 @@ Max. :20.00\strut
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{img/barplot(table).png}
+\includegraphics{img/barplot(table).png}[H]
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -599,13 +674,14 @@ Max. :20.00\strut
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{img/boxplot(final).png}
+\includegraphics{img/boxplot(final).png}[H]
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{22}
+\tightlist
 \item
-  TODO : ?
+  Il y a 6 valeurs abérantes car on a 6 points sous le dernier trait
 \item
   Diagramme en tige et feuille de la moyenne
 \end{enumerate}
@@ -654,7 +730,7 @@ Max. :20.00\strut
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{img/hist(final).png}
+\includegraphics{img/hist(final).png}[H]
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -673,10 +749,38 @@ Max. :20.00\strut
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{26}
+\tightlist
 \item
-  TODO
+  Renvoie les valeurs de densité présentes sur l'histogramme. (Valeur en
+  ordonnée)
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{histo}\OperatorTok{$}\NormalTok{density }\CommentTok{\# Renvoie les valeurs de densité présentes sur l\textquotesingle{}histogramme.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{27}
+\tightlist
 \item
-  TODO
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sum}\NormalTok{ (}\KeywordTok{diff}\NormalTok{(histo}\OperatorTok{$}\NormalTok{breaks) }\OperatorTok{*}\StringTok{ }\NormalTok{histo}\OperatorTok{$}\NormalTok{density)}
+\NormalTok{histo}\OperatorTok{$}\NormalTok{breaks }\CommentTok{\# Renvoie les abscices ou il y a un break}
+\KeywordTok{diff}\NormalTok{(histo}\OperatorTok{$}\NormalTok{breaks) }\CommentTok{\# Renvoie donc la longueur de chaque rectangle}
+\KeywordTok{diff}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{2}\NormalTok{)) }\CommentTok{\# diff renvoie v[i] = v[i+1] {-} v[i]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{28}
+\tightlist
 \item
 \end{enumerate}
 
@@ -686,10 +790,12 @@ Max. :20.00\strut
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{img/plot.png} On remarque que les valeurs sont dans la
-diagonale. Les notes du médian et du final sont donc un peu près égales
-pour tout les étudiants : Un étudiant qui réussi le final réussi aussi
-le médian et inversement.
+\includegraphics{img/plot.png}[H] 
+On remarque que les valeurs sont dans la
+diagonale. Les notes du médian et du final 
+sont donc un peu près égales pour tout les 
+étudiants : Un étudiant qui réussi le final 
+réussi aussi le médian et inversement.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -705,7 +811,7 @@ le médian et inversement.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{img/boxplot(double).png}
+\includegraphics{img/boxplot(double).png}[H]
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -721,7 +827,7 @@ le médian et inversement.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{img/boxplot(DH).png}
+\includegraphics{img/boxplot(DH).png}[H]
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -737,7 +843,7 @@ le médian et inversement.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{img/stripchart.png}
+\includegraphics{img/stripchart.png}[H]
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -754,6 +860,6 @@ le médian et inversement.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{img/stripchart(jitter).png}
+\includegraphics{img/stripchart(jitter).png}[H]
 
 \end{document}
